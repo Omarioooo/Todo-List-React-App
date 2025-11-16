@@ -108,8 +108,7 @@ ul {
 
 .form #task {
     padding-left: 20px;
-    min-width: 400px;
-    max-width: 600px;
+    min-width: 90%;
     background-color: var(--light-gray);
 }
 
