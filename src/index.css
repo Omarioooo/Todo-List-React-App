@@ -1,13 +1,172 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+/** Font */
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+/** Variables */
+:root {
+    --bg-color: #7b7b7b;
+    --light-gray: #edeef0;
+    --green: #4bae4f;
+    --dark-gray: #bbb9bb;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+/** Global Setting */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Poppins", serif;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    background-color: var(--bg-color);
+    height: 100vh;
+    width: 100%;
+    padding: 15px;
+}
+
+.todo-list {
+    padding: 40px;
+    margin: 100px auto 20px;
+    border-radius: 5px;
+    max-width: 650px;
+    background-color: aliceblue;
+    box-shadow: 0px 0px 25px -10px rgba(0, 0, 0, 0.75);
+}
+
+/** Tittle Component */
+.title {
+    margin-bottom: 20px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    justify-content: center;
+}
+
+.title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 120px;
+    height: 3px;
+    transform-origin: center;
+    background-color: var(--green);
+    animation: expandShrink 2s ease-in-out infinite;
+}
+
+@keyframes expandShrink {
+    0% {
+        transform: translateX(-50%) scale(0.3);
+        opacity: 0.2;
+    }
+    50% {
+        transform: translateX(-50%) scale(1.1);
+        opacity: 1;
+    }
+    100% {
+        transform: translateX(-50%) scale(0.3);
+        opacity: 0.2;
+    }
+}
+
+.title img {
+    width: 25px;
+}
+
+/** Form Component*/
+.error {
+    display: block;
+    font-weight: bold;
+    color: red;
+    text-align: center;
+    font-size: 14px;
+    margin-top: 5px;
+}
+
+.form {
+    margin: 10px 0 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.form > * {
+    outline: none;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.form #task {
+    padding-left: 20px;
+    min-width: 400px;
+    max-width: 600px;
+    background-color: var(--light-gray);
+}
+
+.form #save-btn {
+    border: none;
+    padding: 10px;
+    width: 80px;
+    background-color: var(--green);
+}
+
+/** ListItem Component */
+.list-items .list-item{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.list-items .list-item .value.selected{
+color: var(--dark-gray);
+text-decoration: line-through;
+}
+
+.list-items .list-item .custom-checkbox{
+    position: relative;
+    margin-right: 20px;
+}
+
+.list-items .list-item .custom-checkbox .checkmark,
+.list-items .list-item .custom-checkbox svg{
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-radius: 50%;
+    height: 20px;
+    width: 20px;
+    cursor: pointer;
+}
+
+.list-items .list-item .custom-checkbox .checkmark{
+    border: 1px solid var(--bg-color);
+}
+
+.list-items .list-item .custom-checkbox svg{
+    background-color: var(--green);
+    padding: 3px;
+    color: white;
+}
+
+.list-items .list-item .custom-checkbox input{
+    opacity: 0;
+}
+
+.list-items .list-item .remove-btn{
+    border: none;
+    color: var(--dark-gray);
+    cursor: pointer;
+    background-color: transparent;
+    font-size: 25px;
 }
